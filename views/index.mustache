@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style type="text/css">
+      .todo-list {
+        list-style-type: none;
+        padding-left: 0.5em;
+      }
+      .todo-list li {
+        margin-bottom: 1rem;
+      }
+    </style>
+    <!-- above remove defaults from li items -->
+    <title>Index Mustache</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+  </head>
+<body>
+
+
+<!-- important stuff below -->
+
+
+
+
+
+
+<div class="container">
+
+    <div class="header">
+      <h1>Todo List del Dogue</h1>
+    </div>
+
+
+      <form class="form" action="/" method="post">
+        <input class="inputField" type="text" name="todoInput" placeholder=" Remember to Remember this!">
+        <button class="submitButton" type="submit" name="todoButton">Remember This!!</button>
+      </form>
+        {{#todos}}
+         {{^complete}}
+    <div class="row">
+              <form class="formPost" action="/change/{{text}}" method="post">
+              <button class="checkButton" name="completeButton" value="{{text}}" type="submit">complete</button>
+              <!-- mustache in quotes,  -->
+              <p class="chore">{{text}}</p>
+              </form>
+
+          {{/complete}}
+          <!--loops if not complete (i.e. false) then   -->
+          {{#complete}}
+          <p class ="completeItems">{{text}}</p>
+          {{/complete}}
+          <!--this moves items to complete status  -->
+        {{/todos}}
+    </div>
+  </div>
+
+
+
+
+
+
+
+<script src="js.js"></script>
+</body>
+</html>
